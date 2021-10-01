@@ -1,12 +1,37 @@
 # Blossom Firmware
-The firmware for my 
-This repository holds the firmware for my Open Source PCB called Blossom which I designed using [KiCad](https://www.kicad.org/).
+
+This repository contains the firmware for my open source PCB called Blossom which I designed with [KiCad](https://www.kicad.org/).
 
 The repository for the KiCad project can be found under [blossom-kicad](https://github.com/mole99/blossom-kicad).
 
 # Dependencies
 
-TODO
+- gcc-avr
+- binutils-avr
+- avr-libc
+- avrdude
+
+Usually installed via
+
+```
+sudo apt install gcc-avr avr-libc avrdude
+```
+
+# Compiling
+
+To create the `hex` file just run
+
+```
+make program.hex
+```
+
+To upload the program to your board run
+
+```
+make upload
+```
+
+Note that you may need to change the `avrdude` options depending on your programmer.
 
 # Functionality
 
