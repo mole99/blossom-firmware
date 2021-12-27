@@ -68,6 +68,9 @@ int main(void)
   sei();
   
   pattern0_bootupPattern(1500, 500);
+  
+  uint16_t pattern_period_ms = 1000;
+  uint8_t current_pattern = 0;
 
   while (1)
   {
@@ -93,45 +96,63 @@ int main(void)
     // When active, do stuff
     else
     {
-      set_sleep_mode(SLEEP_MODE_IDLE);
-      sei();
-      sleep_mode();
+      //set_sleep_mode(SLEEP_MODE_IDLE);
+      //sei();
+      //sleep_mode();
       
       if (buttons.button_0.state == PRESSED)
       {
-        pattern1_pulseSoft(3000, 1000);
+        pattern_period_ms -= 200;
+        
+        if (pattern_period_ms < 200)
+        {
+          pattern_period_ms = 200;
+        }
+        
+        buttons.button_0.state = NOT_PRESSED;
       }
       else if (buttons.button_1.state == PRESSED)
       {
-        pattern3_fireRingSoft(5000, 1000);
+        current_pattern++;
+        
+        if (current_pattern > 4)
+        {
+          current_pattern = 0;
+        }
+        
+        buttons.button_1.state = NOT_PRESSED;
       }
       else if (buttons.button_2.state == PRESSED)
       {
-        sequence0_heartBeatHard(2);
+        pattern_period_ms += 200;
+        
+        if (pattern_period_ms > 10000)
+        {
+          pattern_period_ms = 10000;
+        }
+        
+        buttons.button_2.state = NOT_PRESSED;
       }
       
-      /*pattern4_starsHard(5000, 1000);
-      sleep_ms(2000);
+      switch (current_pattern)
+      {
+        case 0:
+          pattern0_pulseHard(pattern_period_ms, pattern_period_ms);
+          break;
+        case 1:
+          pattern1_pulseSoft(pattern_period_ms, pattern_period_ms);
+          break;
+        case 2:
+          pattern2_fireRingHard(pattern_period_ms, pattern_period_ms);
+          break;
+        case 3:
+          pattern3_fireRingSoft(pattern_period_ms, pattern_period_ms);
+          break;
+        case 4:
+          pattern4_starsHard(pattern_period_ms, pattern_period_ms);
+          break;
       
-      pattern3_fireRingSoft(5000, 1000);
-      sleep_ms(2000);
-      pattern2_fireRingHard(5000, 1000);
-      sleep_ms(2000);
-      pattern0_pulseHard(3000, 1000);
-      sleep_ms(2000);
-      pattern1_pulseSoft(3000, 1000);
-      sleep_ms(2000);
-      sequence0_heartBeatHard(2);
-      sleep_ms(2000);
-      sequence1_heartBeatSoft(2);
-      sleep_ms(2000);
-      pattern99_lightning(3000, 500);
-      
-      current_state = INACTIVE;
-
-      //deactivateADCInterrupt(); // Necessary?
-      activateLED(-1);*/
-      
+      }      
     }
   }
 

@@ -42,8 +42,8 @@ ISR(WDT_vect)
   }
   else
   {
-    // Get back to inactive state after 8 * 4 = 32s
-    if (wdt_inactive_cnt++ >= 8)
+    // Get back to inactive state after 16 * 4 = 64s
+    if (wdt_inactive_cnt++ >= 16)
     {
       current_state = INACTIVE;
       activateLED(-1);
