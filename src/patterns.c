@@ -23,25 +23,25 @@ void pattern0_bootupPattern(uint16_t duration_ms, uint16_t period_ms)
 
   while (duration_ms-- > 0)
   {
-    if (counter++ >= period_ms / 12)
+    if (counter++ >= period_ms / NUM_LEDS)
     {
-      for (uint16_t i=0; i<12; i++)
+      for (uint16_t i=0; i<NUM_LEDS; i++)
       {
         led_array[i] = 0;
       }
 
-      led_array[current_led] = 15;
+      led_array[current_led] = MAX_INTENSITY;
 
       current_led++;
       
-      current_led = current_led >= 12 ? 0 : current_led;
+      current_led = current_led >= NUM_LEDS ? 0 : current_led;
       
       counter = 0;
     }
     sleep_ms(1);
   }
   
-  for (uint16_t i=0; i<12; i++)
+  for (uint16_t i=0; i<NUM_LEDS; i++)
   {
     led_array[i] = 0;
   }
@@ -54,10 +54,10 @@ void pattern0_pulseHard(uint16_t duration_ms, uint16_t period_ms)
 
   while (duration_ms-- > 0)
   {
-    if (counter++ >= period_ms / 15)
+    if (counter++ >= period_ms / MAX_INTENSITY)
     {
   
-      for (uint16_t i=0; i<12; i++)
+      for (uint16_t i=0; i<NUM_LEDS; i++)
       {
         led_array[i] = intensity_lut[current_intensity];
       }
@@ -72,7 +72,7 @@ void pattern0_pulseHard(uint16_t duration_ms, uint16_t period_ms)
     sleep_ms(1);
   }
   
-  for (uint16_t i=0; i<12; i++)
+  for (uint16_t i=0; i<NUM_LEDS; i++)
   {
     led_array[i] = 0;
   }
@@ -88,9 +88,9 @@ void pattern1_pulseSoft(uint16_t duration_ms, uint16_t period_ms)
     if (counter++ >= period_ms / 30)
     {
   
-      for (uint16_t i=0; i<12; i++)
+      for (uint16_t i=0; i<NUM_LEDS; i++)
       {
-        uint8_t led_intensity = current_intensity > 15 ? 31 - current_intensity : current_intensity;
+        uint8_t led_intensity = current_intensity > MAX_INTENSITY ? 31 - current_intensity : current_intensity;
         led_array[i] = intensity_lut[led_intensity];
       }
       
@@ -104,7 +104,7 @@ void pattern1_pulseSoft(uint16_t duration_ms, uint16_t period_ms)
     sleep_ms(1);
   }
   
-  for (uint16_t i=0; i<12; i++)
+  for (uint16_t i=0; i<NUM_LEDS; i++)
   {
     led_array[i] = 0;
   }
@@ -117,23 +117,23 @@ void pattern2_fireRingHard(uint16_t duration_ms, uint16_t period_ms)
 
   while (duration_ms-- > 0)
   {
-    if (counter++ >= period_ms / 12)
+    if (counter++ >= period_ms / NUM_LEDS)
     {
-      for (uint16_t i=0; i<12; i++)
+      for (uint16_t i=0; i<NUM_LEDS; i++)
       {
-        uint8_t led_intensity = ((i + current_offset ) % 12) * 15 / 12;
+        uint8_t led_intensity = ((i + current_offset ) % NUM_LEDS) * MAX_INTENSITY / NUM_LEDS;
         led_array[i] = intensity_lut[led_intensity % 16];
       }
       
       current_offset++;
-      current_offset = (current_offset) % 12;
+      current_offset = (current_offset) % NUM_LEDS;
       
       counter = 0;
     }
     sleep_ms(1);
   }
   
-  for (uint16_t i=0; i<12; i++)
+  for (uint16_t i=0; i<NUM_LEDS; i++)
   {
     led_array[i] = 0;
   }
@@ -146,25 +146,25 @@ void pattern3_fireRingSoft(uint16_t duration_ms, uint16_t period_ms)
 
   while (duration_ms-- > 0)
   {
-    if (counter++ >= period_ms / 12)
+    if (counter++ >= period_ms / NUM_LEDS)
     {
-      for (uint16_t i=0; i<12; i++)
+      for (uint16_t i=0; i<NUM_LEDS; i++)
       {
-        uint16_t current_intensity = ((i + current_offset) % 12) * 31 / 12;
+        uint16_t current_intensity = ((i + current_offset) % NUM_LEDS) * 31 / NUM_LEDS;
       
-        uint8_t led_intensity = current_intensity > 15 ? 31 - current_intensity : current_intensity;
+        uint8_t led_intensity = current_intensity > MAX_INTENSITY ? 31 - current_intensity : current_intensity;
         led_array[i] = intensity_lut[led_intensity % 16];
       }
       
       current_offset++;
-      current_offset = (current_offset) % 12;
+      current_offset = (current_offset) % NUM_LEDS;
       
       counter = 0;
     }
     sleep_ms(1);
   }
   
-  for (uint16_t i=0; i<12; i++)
+  for (uint16_t i=0; i<NUM_LEDS; i++)
   {
     led_array[i] = 0;
   }
@@ -177,23 +177,23 @@ void pattern4_starsHard(uint16_t duration_ms, uint16_t period_ms)
 
   while (duration_ms-- > 0)
   {
-    if (counter++ >= period_ms / 12)
+    if (counter++ >= period_ms / NUM_LEDS)
     {
-      for (uint16_t i=0; i<12; i++)
+      for (uint16_t i=0; i<NUM_LEDS; i++)
       {
-        uint8_t led_intensity = ((i*9 + current_offset ) % 12) * 15 / 12;
+        uint8_t led_intensity = ((i*9 + current_offset ) % NUM_LEDS) * MAX_INTENSITY / NUM_LEDS;
         led_array[i] = intensity_lut[led_intensity % 16];
       }
       
       current_offset++;
-      current_offset = (current_offset) % 12;
+      current_offset = (current_offset) % NUM_LEDS;
       
       counter = 0;
     }
     sleep_ms(1);
   }
   
-  for (uint16_t i=0; i<12; i++)
+  for (uint16_t i=0; i<NUM_LEDS; i++)
   {
     led_array[i] = 0;
   }
@@ -209,7 +209,7 @@ void pattern99_lightning(uint16_t duration_ms, uint16_t period_ms)
     if (counter++ >= period_ms / 16)
     {
   
-      for (uint16_t i=0; i<12; i++)
+      for (uint16_t i=0; i<NUM_LEDS; i++)
       {
         led_array[i] = intensity_lut[current_intensity];
       }
@@ -223,7 +223,7 @@ void pattern99_lightning(uint16_t duration_ms, uint16_t period_ms)
 
     sleep_ms(1);
     
-    for (uint16_t i=0; i<12; i++)
+    for (uint16_t i=0; i<NUM_LEDS; i++)
     {
       led_array[i] = 0;
     }

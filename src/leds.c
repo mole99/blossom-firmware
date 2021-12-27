@@ -6,7 +6,27 @@
 #define LED2 PB2
 #define LED3 PB3
 
-uint8_t led_array[12] = {0};
+uint8_t led_array[NUM_LEDS] = {0};
+
+uint8_t intensity_lut[16] = 
+{
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  8,
+  10,
+  14,
+  17,
+  21,
+  26,
+  31,
+  36,
+  42,
+  48,
+};
 
 void initTimer0()
 {
@@ -101,7 +121,7 @@ ISR(TIMER0_OVF_vect)
     time_cnt = 0;
     led_cnt++;
     
-    if (led_cnt >= 12)
+    if (led_cnt >= NUM_LEDS)
     {
       led_cnt = 0;
     }

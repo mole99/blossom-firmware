@@ -1,25 +1,5 @@
 #include <utils.h>
 
-uint8_t intensity_lut[16] = 
-{
-  0,
-  1,
-  2,
-  3,
-  4,
-  5,
-  8,
-  10,
-  14,
-  17,
-  21,
-  26,
-  31,
-  36,
-  42,
-  48,
-};
-
 volatile uint16_t timer1_sleep_ms = 0;
 
 void sleep_ms(uint16_t time_ms)

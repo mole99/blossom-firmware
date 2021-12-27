@@ -4,6 +4,9 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
+#define NUM_LEDS 12
+#define MAX_INTENSITY 15
+
 extern uint8_t led_array[12];
 
 void initTimer0();
