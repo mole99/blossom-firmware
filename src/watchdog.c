@@ -14,7 +14,7 @@ ISR(WDT_vect)
 {
   if (current_state == INACTIVE)
   {
-  	// Enable ADC
+    // Enable ADC
     ADCSRA |= (1<<ADEN);
   
     // Start conversion
@@ -36,7 +36,7 @@ ISR(WDT_vect)
     }
     else
     {
-    	// Disable ADC
+      // Disable ADC
       ADCSRA &= ~(1<<ADEN);
     }
   }

@@ -60,14 +60,14 @@ ISR(TIMER1_OVF_vect)
   // Increase the time for the buttons if pressed
   if (buttons.button_0.state != NOT_PRESSED)
   {
-  	buttons.button_0.time_ms++;
+    buttons.button_0.time_ms++;
   }
   else if (buttons.button_1.state != NOT_PRESSED)
   {
-  	buttons.button_1.time_ms++;
+    buttons.button_1.time_ms++;
   }
   else if (buttons.button_2.state != NOT_PRESSED)
   {
-  	buttons.button_2.time_ms++;
+    buttons.button_2.time_ms++;
   }
 }

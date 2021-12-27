@@ -83,7 +83,7 @@ ISR(TIMER0_OVF_vect)
   // No conversion is in progress
   if (!(ADCSRA & (1<<ADSC)))
   {
-  	// Start conversion
+    // Start conversion
     ADCSRA |= (1<<ADSC);
   }
   

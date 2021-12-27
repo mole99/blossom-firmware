@@ -26,11 +26,11 @@ void pattern0_bootupPattern(uint16_t duration_ms, uint16_t period_ms)
     if (counter++ >= period_ms / 12)
     {
       for (uint16_t i=0; i<12; i++)
-			{
-				led_array[i] = 0;
-			}
+      {
+        led_array[i] = 0;
+      }
 
-			led_array[current_led] = 15;
+      led_array[current_led] = 15;
 
       current_led++;
       
