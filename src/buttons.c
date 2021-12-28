@@ -21,7 +21,7 @@ The threshold are therefore defined as follows:
 // has to be in a certain threshold
 // to register the button as pressed
 
-#define DEAD_TIME 100 // ms
+#define DEAD_TIME 150 // ms
 
 buttons_t buttons = {0};
 
