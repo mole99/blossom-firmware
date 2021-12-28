@@ -115,7 +115,7 @@ int main(void)
       {
         current_pattern++;
         
-        if (current_pattern > 4)
+        if (current_pattern > 5)
         {
           current_pattern = 0;
         }
@@ -151,8 +151,13 @@ int main(void)
         case 4:
           pattern4_starsHard(pattern_period_ms, pattern_period_ms);
           break;
-      
-      }      
+        case 5:
+          pattern99_lightning(pattern_period_ms, pattern_period_ms);
+          break;
+        default:
+          pattern0_bootupPattern(1500, 500);
+          break;
+      }
     }
   }
 

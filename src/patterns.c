@@ -12,13 +12,9 @@ Pattern ideas:
 
 */
 
-/*
-TODO
-*/
-
 void pattern0_bootupPattern(uint16_t duration_ms, uint16_t period_ms)
 {
-  uint8_t counter = 0;
+  uint16_t counter = 0;
   uint8_t current_led = 0;
 
   while (duration_ms-- > 0)
@@ -49,7 +45,7 @@ void pattern0_bootupPattern(uint16_t duration_ms, uint16_t period_ms)
 
 void pattern0_pulseHard(uint16_t duration_ms, uint16_t period_ms)
 {
-  uint8_t counter = 0;
+  uint16_t counter = 0;
   uint8_t current_intensity = 0;
 
   while (duration_ms-- > 0)
@@ -80,7 +76,7 @@ void pattern0_pulseHard(uint16_t duration_ms, uint16_t period_ms)
 
 void pattern1_pulseSoft(uint16_t duration_ms, uint16_t period_ms)
 {
-  uint8_t counter = 0;
+  uint16_t counter = 0;
   uint8_t current_intensity = 0;
 
   while (duration_ms-- > 0)
@@ -112,7 +108,7 @@ void pattern1_pulseSoft(uint16_t duration_ms, uint16_t period_ms)
 
 void pattern2_fireRingHard(uint16_t duration_ms, uint16_t period_ms)
 {
-  uint8_t counter = 0;
+  uint16_t counter = period_ms / NUM_LEDS;
   uint8_t current_offset = 0;
 
   while (duration_ms-- > 0)
@@ -141,7 +137,7 @@ void pattern2_fireRingHard(uint16_t duration_ms, uint16_t period_ms)
 
 void pattern3_fireRingSoft(uint16_t duration_ms, uint16_t period_ms)
 {
-  uint8_t counter = 0;
+  uint16_t counter = period_ms / NUM_LEDS;
   uint8_t current_offset = 0;
 
   while (duration_ms-- > 0)
@@ -172,7 +168,7 @@ void pattern3_fireRingSoft(uint16_t duration_ms, uint16_t period_ms)
 
 void pattern4_starsHard(uint16_t duration_ms, uint16_t period_ms)
 {
-  uint8_t counter = 0;
+  uint16_t counter = 0;
   uint8_t current_offset = 0;
 
   while (duration_ms-- > 0)
@@ -201,7 +197,7 @@ void pattern4_starsHard(uint16_t duration_ms, uint16_t period_ms)
 
 void pattern99_lightning(uint16_t duration_ms, uint16_t period_ms)
 {
-  uint8_t counter = 0;
+  uint16_t counter = 0;
   uint8_t current_intensity = 0;
 
   while (duration_ms-- > 0)
